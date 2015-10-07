@@ -93,7 +93,8 @@ def reportMatch(winner, loser):
     cur = db.cursor()
     winner = bleach.clean(winner)
     loser = bleach.clean(loser)
-    cur.execute("insert into Matches values(%s, %s, %s);", (winner, loser, winner))
+    query = "insert into Matches values(%s, %s, %s);"
+    cur.execute(query, (winner, loser, winner))
     db.commit()
     db.close()
  

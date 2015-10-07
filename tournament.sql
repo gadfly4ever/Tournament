@@ -40,9 +40,7 @@ FROM Players, MatchesPlayedNum, MatchesWonNum
 WHERE Players.idn = MatchesPlayedNum.PlayerId AND Players.idn = MatchesWonNum.PlayerId
 ORDER BY MatchesWonNum.winNum DESC;
 
-
+-- View for Swiss Pairings
 CREATE VIEW Pairings AS SELECT p1.idn AS p1id, p1.name AS p1name, p2.idn AS p2id, p2.name AS p2name
 FROM Standings AS p1, Standings AS p2 
 WHERE p1.idn < p2.idn AND p1.winNum = p2.winNum AND p1.matchNum = p2.matchNum;
-
--- WHERE p1.idn < p2.idn AND p2.idn = p1.idn+1;
